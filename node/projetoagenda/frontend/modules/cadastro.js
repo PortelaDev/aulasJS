@@ -8,26 +8,21 @@ export default class Cadastro {
   }
 
   events() {
-    if (!this.form) return;
+    if (!this.cad) return;
     this.cad.addEventListener('submit', e => {
+
       e.preventDefault();
       this.validate(e);
-    });
+    })
   }
-
   validate(e) {
     const el = e.target;
-    const nameInput = el.querySelector('input[class="nome"]');
+    const nameInput = el.querySelector('input[name="nome"]');
     let error = false;
 
     if (!nameInput.value) {
-      let p = document.createElement('p');
-      let errorMsg = document.createTextNode('Nome precisa ser preenchido')
-      p.appendChild(errorMsg);
-      p.classList.add('erro');
-      p.classList.add('alert-danger');
-      nomeInput.after(p);
-      error = true;
+      alert('O Nome precisa ser preenchido!');
+      let error = true;
     }
     if (!error) el.submit();
   }
